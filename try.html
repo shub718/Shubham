@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .Review_container {
+    width: 98%;
+    height: auto;
+    /* background-color: red; */
+    position: relative;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.slide_div {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.slide {
+    width: 450px;
+    height: auto;
+    /* background-color: red; */
+    margin: 20px;
+    border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    background-image: var(--back);
+}
+
+.slide>div {
+    width: 99%;
+    height: 98%;
+    border-radius: 25px;
+    background-color: white;
+    /* background-color: black; */
+    text-align: left;
+    border: 2px solid navy;
+
+}
+
+.slide>div>img {
+    margin-top: 5px;
+    width: 80px;
+    padding-left: 20px;
+}
+.slide>div>h1 {
+   margin-top: 0px;
+   padding-left: 20px;
+   padding-top: 0px;
+   margin-bottom: 0px;
+}
+.slide>div>p{
+    padding: 20px;
+    padding-top: 0;
+    text-align: justify;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.slide>div>span{
+    display: inline-block;
+    width: 90%;
+    margin-left: 20px;
+    margin-top: 0px;
+    font-size: 34px;
+    color: yellow;
+    margin-bottom: 10px;
+}
+
+.left_btn {
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50px);
+    left: 0px;
+    font-size: 1.6rem;
+    padding: 5px 15px;
+    border-radius: 25px;
+    border: none;
+
+}
+
+.right_btn {
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50px);
+    right: -40px;
+    font-size: 1.6rem;
+    padding: 5px 15px;
+    border-radius: 25px;
+    border: none;
+}
+
+.left_btn:hover,
+.right_btn:hover {
+    background-color: red;
+    color: white;
+}
+
+    </style>
+    <div class="Review_container">
+        
+        <div class="slide_div">
+            <div>
+                <button onclick="next_slide(-1)" class="left_btn">
+                    < </button>
+            </div>
+            <div class="slide">
+                <div>
+                    <img src="img/tdd2.webp" alt="">
+                    <h1>Kavita Jain</h1>
+                    <p>
+                        All of my itenary went very smooth and all the agents handled very well. We travelled with one and half year old baby. But we didn't face any problem. They took great care and we never faced any issue.
+                    </p>
+                    <span>
+                        &#9733  &#9733   &#9733  &#9733   &#9733 
+                    </span>
+                </div>
+            </div>
+            <div class="slide">
+                <div>
+                    <img src="img/tdd3.webp" alt="">
+                    <h1>Deepak Sindhu</h1>
+                    <p>
+                        A short trip with family to Hanoi - Ha Long Bay, the itinerary was well designed and effieciently executed. Thanks so much to Mr Tom for his constant availability.
+                    </p>
+                    <span>
+                        &#9733  &#9733   &#9733  &#9733   &#9733 
+                    </span>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <div>
+                    <img src="img/tdd2.webp" alt="">
+                    <h1>Yogesh Soni</h1>
+                    <p>
+                        Had an amazing, memorable and safe trip to Kashmir with Travel Gantavya. from The Kosher Hospitality was extremely polite and professional. She was always in touch with us throughout our Kashmir tour.
+                    </p>
+                    <span>
+                        &#9733  &#9733   &#9733  &#9733   &#9733 
+                    </span>
+                </div>
+            </div>
+            
+            
+            <div class="right_btn_div">
+                <button onclick="next_slide(1)" class="right_btn">></button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // img slider function
+let slide_index = 0;
+        show_slide(slide_index);
+        function next_slide(n) {
+            show_slide(slide_index += n)
+        }
+        function current_slide(n) {
+            show_slide(slide_index = n)
+        }
+        function show_slide(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n >= slides.length) {
+                slide_index = 0
+            }
+            if (n < 0) {
+                slide_index = slides.length - 1
+            }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            let width = screen.width;
+            if(width<1025){
+                slides[slide_index].style.display = "block";
+            }
+            else{
+                slides[slide_index].style.display = "block";
+                slides[slide_index+1].style.display = "block";
+
+            }
+            
+        }
+        setInterval(() => {
+            next_slide(1)
+        }, 2000);
+
+
+
+    </script>
+</body>
+</html>
